@@ -8,7 +8,7 @@ target_link_libraries(sys ${CONFIG_PROJECT_LIB})
 # IRQ manager is required that residing in platform
 target_link_libraries(sys ${PLATFORM_NAME})
 # Requires libcpp to initialize streams
-target_link_libraries(sys libcpp)
+#target_link_libraries(sys libcpp)
 
 # A special initialization is required if kernel is present
 if (DEFINED CONFIG_OS)

@@ -51,6 +51,7 @@ void freertos_main_runner(void *arg)
 
 void kernel_main()
 {
+    freertos_main_runner(NULL);
     int ret = xTaskCreate(freertos_main_runner,
                           "main",
                           MAIN_STACK_SIZE / sizeof(StackType_t),

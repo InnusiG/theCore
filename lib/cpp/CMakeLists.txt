@@ -25,6 +25,7 @@ endif()
 
 # Some of the includes are provided by the project itself
 target_link_libraries(libcpp PUBLIC ${CONFIG_CONSOLE_LIB})
+
 add_cppcheck(libcpp UNUSED_FUNCTIONS STYLE POSSIBLE_ERROR FORCE)
 
 # Unit testing

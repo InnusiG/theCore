@@ -2,20 +2,19 @@
 #include <cstddef>
 
 #include <platform/irq_manager.hpp>
-#include <ecl/iostream.hpp>
 
 // TODO: move it somewhere
 void operator delete(void *)
 {
-    // Abort - delete is forbidden
-    for (;;);
+    // TODO: call to abort routine
+    for(;;);
 }
 
 // TODO: move it somewhere
 void operator delete(void *, unsigned int)
 {
-    // Abort - delete is forbidden
-    for (;;);
+    // TODO: call to abort routine
+    for(;;);
 }
 
 
@@ -31,7 +30,7 @@ uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
 extern "C" __attribute__((noreturn)) __attribute__((used))
 void __stack_chk_fail(void)
 {
-    ecl::cout << "Fail!!!" << ecl::endl;
+    // TODO: call to abort routine
     for(;;);
 }
 
@@ -39,10 +38,6 @@ extern "C" void platform_init();
 extern "C" void board_init();
 extern "C" void kernel_init();
 extern "C" void kernel_main();
-
-namespace ecl {
-extern typename istream< console_driver >::device_type console_device;
-}
 
 extern "C" void core_main(void)
 {
@@ -61,12 +56,6 @@ extern "C" void core_main(void)
 		// fn();
 		((void (*)()) *p)();
     }
-
-    IRQ_manager::init();
-
-    // Due to undefined static init order, this initialization is placed here
-    ecl::console_device.init();
-
 
     kernel_main();
 }
